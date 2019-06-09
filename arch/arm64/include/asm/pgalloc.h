@@ -80,11 +80,6 @@ static inline void pmd_free(struct mm_struct *mm, pmd_t *pmd)
 }
 #endif
 
-static inline void __pud_populate(pud_t *pud, phys_addr_t pmd, pudval_t prot)
-{
-	set_pud(pud, __pud(pmd | prot));
-}
-
 static inline void pud_populate(struct mm_struct *mm, pud_t *pud, pmd_t *pmd)
 {
 	__pud_populate(pud, __pa(pmd), PMD_TYPE_TABLE);
